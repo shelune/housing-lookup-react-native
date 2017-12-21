@@ -29,7 +29,7 @@ class CriteriaArea extends Component {
           <Badge
             key={index}
             containerStyle={styles.badge}
-            value={place.municipality}
+            value={place.district ? `${place.district}, ${place.municipality}` : place.municipality}
             onPress={() => this.props.removeArea(index)}
           />
         )
@@ -37,6 +37,17 @@ class CriteriaArea extends Component {
     }
     
     return null;
+  }
+
+  onBtnPress() {
+    const commaPos = this.state.area.indexOf(',');
+    if (commaPos !== -1) {
+      const district = this.state.area.substring(commaPos, 0).trim()
+      const municipality = this.state.area.substring(commaPos + 1, this.state.area.length).trim();
+      this.props.selectArea({municipality: municipality, district: district});
+    } else {
+      this.props.selectArea({municipality: this.state.area});
+    }
   }
 
   render() {
@@ -56,7 +67,7 @@ class CriteriaArea extends Component {
         <Button
           style={styles.button}
           title='Add'
-          onPress={() => this.props.selectArea(this.state.area)}
+          onPress={() => this.onBtnPress()}
         />
       </View>
     )

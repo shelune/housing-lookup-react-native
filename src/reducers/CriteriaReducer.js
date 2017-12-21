@@ -28,8 +28,14 @@ export default (state, action) => {
   }
   switch (action.type) {
     case ADD_AREA:
-      return state.selectedPlaces.some(place => place.municipality === action.payload) ? state : Object.assign({}, state, {
-        selectedPlaces: [...state.selectedPlaces, { municipality: action.payload }]
+      const {district, municipality} = action.payload;
+
+      return state.selectedPlaces.some(place => (place.municipality === municipality && place.district === district)) 
+      ? state 
+      : Object.assign({}, state, {
+        selectedPlaces: district 
+        ? [...state.selectedPlaces, { municipality: municipality, district: district }] 
+        : [...state.selectedPlaces, { municipality: municipality }]
       });
     case REMOVE_AREA:
       return Object.assign({}, state, {
