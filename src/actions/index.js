@@ -13,7 +13,10 @@ import {
   FETCH_APARTMENTPAGE_FAILED,
   ADD_FEATURE,
   REMOVE_FEATURE,
-  FETCH_MORE_OK
+  FETCH_MORE_OK,
+  FETCH_SUGGESTIONS,
+  FETCH_SUGGESTIONS_OK,
+  FETCH_SUGGESTIONS_FAILED
 } from './types';
 import resources from './../utilities/resources';
 import {
@@ -74,7 +77,7 @@ export const removeExtraFeature = (feature) => {
 
 export const fetchMoreApartments = (fetchParams) => {
   const config = {
-    baseURL: 'https://www.sato.fi/api/v1/',
+    baseURL: resources.baseUrl,
     url: '/apartments/search',
     method: 'post',
     headers: { 'X-Requested-With': 'XMLHttpRequest' },
@@ -101,7 +104,7 @@ export const fetchMoreApartments = (fetchParams) => {
 
 export const fetchApartments = (fetchParams) => {
   const config = {
-    baseURL: 'https://www.sato.fi/api/v1/',
+    baseURL: resources.baseUrl,
     url: '/apartments/search',
     method: 'post',
     headers: { 'X-Requested-With': 'XMLHttpRequest' },
@@ -149,5 +152,27 @@ export const fetchApartmentPage = (url) => {
       console.log('error when fetching page: ', err);
       dispatch({ type: FETCH_APARTMENTS_FAILED, payload: err });
     })
+  }
+}
+
+export const fetchSuggestions = (keyword) => {
+  const config = {
+    baseURL: resources.baseUrl,
+    url: '/places/region-search',
+    method: 'get',
+    headers: { 'X-Requested-With': 'XMLHttpRequest' },
+    params: {
+      text: keyword
+    }
+  };
+
+  return (dispatch) => {
+    dispatch({type: FETCH_SUGGESTIONS, payload: ''});
+    axios.request(config).then(response => {
+      dispatch({type: FETCH_SUGGESTIONS_OK, payload: response});
+    })
+    .catch(err => {
+      dispatch({type: FETCH_SUGGESTIONS_FAILED, payload: 'Something went wrong here'})
+    });
   }
 }

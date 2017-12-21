@@ -1,6 +1,7 @@
 import { Dimensions } from 'react-native';
 
 export default {
+  baseUrl: 'https://www.sato.fi/api/v1/',
   rentLimit: {
     max: 3000,
     min: 300,

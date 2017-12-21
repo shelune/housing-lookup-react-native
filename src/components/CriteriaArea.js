@@ -16,9 +16,11 @@ class CriteriaArea extends Component {
     this.state = {area: ''};
   }
 
-  // before receiving props from store, reset AREA to empty
-  componentWillReceiveProps() {
-    this.setState({ area: '' });
+  onChangeArea(area) {
+    this.setState({area});
+    if (area.length >= 3) {
+      this.props.fetchSuggestions(area);
+    }
   }
 
   renderAreaBadges() {
@@ -48,6 +50,7 @@ class CriteriaArea extends Component {
     } else {
       this.props.selectArea({municipality: this.state.area});
     }
+    this.setState({ area: '' });
   }
 
   render() {
@@ -59,7 +62,7 @@ class CriteriaArea extends Component {
         <FormInput
           placeholder='Where do you want to live in?'
           value={this.state.area}
-          onChangeText={(area) => {this.setState({area})}}
+          onChangeText={(area) => this.onChangeArea(area)}
         />
         <View style={styles.badgeContainer}>
           {this.renderAreaBadges()}

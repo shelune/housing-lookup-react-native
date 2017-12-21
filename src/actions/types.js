@@ -16,3 +16,8 @@ export const FETCH_MORE_OK = 'fetch_more_apartments_ok';
 export const FETCH_APARTMENTPAGE_LOADING = 'fetch_apartment_page_loading';
 export const FETCH_APARTMENTPAGE_OK = 'fetch_apartment_page_ok';
 export const FETCH_APARTMENTPAGE_FAILED = 'fetch_apartment_page_failed';
+
+export const UPDATE_KEYWORD = 'update_keyword';
+export const FETCH_SUGGESTIONS = 'fetch_suggestions';
+export const FETCH_SUGGESTIONS_OK = 'fetch_suggestions_ok';
+export const FETCH_SUGGESTIONS_FAILED = 'fetch_suggestions_failed';
