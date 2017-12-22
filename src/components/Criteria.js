@@ -16,7 +16,7 @@ import CriteriaArea from './CriteriaArea';
 import CriteriaRent from './CriteriaRent';
 import CriteriaHousingTypes from './CriteriaHousingTypes';
 import CriteriaFeatures from './CriteriaFeatures';
-import AutocompletePanel from './common/AutocompletePanel';
+import AutocompletePanel from './AutocompletePanel';
 
 class Criteria extends Component {
 

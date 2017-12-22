@@ -1,11 +1,11 @@
 import React, { Component, PureComponent } from 'react';
 import { Text, View, FlatList, TouchableHighlight } from 'react-native';
 import { connect } from 'react-redux';
-import * as actions from './../../actions';
+import * as actions from './../actions';
 
-import SuggestionCell from './SuggestionCell';
+import SuggestionCell from './common/SuggestionCell';
 
-import styling from '../../utilities/styling';
+import styling from '../utilities/styling';
 
 class AutocompletePanel extends PureComponent {
   constructor(props) {
