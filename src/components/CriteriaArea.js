@@ -39,8 +39,14 @@ class CriteriaArea extends Component {
         )
       });
     }
-    
     return null;
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.selectedPlaces !== this.props.selectedPlaces) {
+      this.setState({area: ''});
+      this.props.hideSuggestions();
+    }
   }
 
   onBtnPress() {
@@ -52,7 +58,7 @@ class CriteriaArea extends Component {
     } else {
       this.props.selectArea({municipality: this.state.area});
     }
-    this.setState({ area: '' });
+    // this.setState({ area: '' });
   }
 
   render() {

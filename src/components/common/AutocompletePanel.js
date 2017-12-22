@@ -1,21 +1,22 @@
-import React, { Component } from 'react';
-import { Text, View, FlatList } from 'react-native';
+import React, { Component, PureComponent } from 'react';
+import { Text, View, FlatList, TouchableHighlight } from 'react-native';
 import { connect } from 'react-redux';
 import * as actions from './../../actions';
 
+import SuggestionCell from './SuggestionCell';
+
 import styling from '../../utilities/styling';
 
-class AutocompletePanel extends Component {
+class AutocompletePanel extends PureComponent {
   constructor(props) {
     super(props);
-    this.state = {};
   }
 
   _renderItem({item}) {
     return (
-      <View style={styles.listItem}>
-        <Text>{`${item.place.district ? item.place.district + ', ' : ''}`}{item.place.municipality}</Text>
-      </View>
+      <SuggestionCell 
+        place={item.place}
+      />
     );
   }
 
@@ -39,11 +40,12 @@ const styles = {
     top: 70,
     left: 10,
     width: styling.screenWidth - 20,
-    zIndex: 2,
+    zIndex: 3,
   },
   listItem: {
     paddingVertical: 5,
-    paddingHorizontal: 10
+    paddingHorizontal: 10,
+    height: 30,
   }
 };
 

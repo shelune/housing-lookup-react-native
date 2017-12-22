@@ -31,7 +31,6 @@ class Criteria extends Component {
         <CriteriaArea
           style={styles.section}
         />
-        <AutocompletePanel />
         {/* Rent Price */}
         <CriteriaRent style={styles.section}/>
         {/* Housing Types */}
@@ -45,6 +44,7 @@ class Criteria extends Component {
           onPress={() => this.onButtonPress()}
           buttonStyle={styles.searchButton}
         />
+        <AutocompletePanel />
       </ScrollView>
     )
   };

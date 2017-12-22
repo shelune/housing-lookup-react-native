@@ -28,6 +28,7 @@ export default (state, action) => {
   }
   switch (action.type) {
     case ADD_AREA:
+      console.log('reducer updating area');
       const {district, municipality} = action.payload;
 
       return state.selectedPlaces.some(place => (place.municipality === municipality && place.district === district)) 
