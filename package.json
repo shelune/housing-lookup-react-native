@@ -5,7 +5,8 @@
   "scripts": {
     "start": "node node_modules/react-native/local-cli/cli.js start",
     "ios": "react-native run-ios",
-    "test": "jest"
+    "test": "jest",
+    "postinstall": "remotedev-debugger --hostname localhost --port 5678 --injectserver"
   },
   "dependencies": {
     "axios": "^0.17.1",
@@ -26,9 +27,11 @@
   "devDependencies": {
     "babel-jest": "22.0.2",
     "babel-preset-react-native": "4.0.0",
-    "react-native-scripts": "1.8.1",
     "jest": "22.0.2",
-    "react-test-renderer": "16.0.0"
+    "react-native-scripts": "1.8.1",
+    "react-test-renderer": "16.0.0",
+    "remote-redux-devtools": "^0.5.12",
+    "remotedev-rn-debugger": "^0.8.3"
   },
   "jest": {
     "preset": "react-native"
