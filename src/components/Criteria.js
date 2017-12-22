@@ -15,7 +15,8 @@ import styling from './../utilities/styling';
 import CriteriaArea from './CriteriaArea';
 import CriteriaRent from './CriteriaRent';
 import CriteriaHousingTypes from './CriteriaHousingTypes';
-import CriteriaFeatures from './CriteriaFeatures'
+import CriteriaFeatures from './CriteriaFeatures';
+import AutocompletePanel from './common/AutocompletePanel';
 
 class Criteria extends Component {
 
@@ -30,6 +31,7 @@ class Criteria extends Component {
         <CriteriaArea
           style={styles.section}
         />
+        <AutocompletePanel />
         {/* Rent Price */}
         <CriteriaRent style={styles.section}/>
         {/* Housing Types */}

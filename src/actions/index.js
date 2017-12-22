@@ -16,7 +16,8 @@ import {
   FETCH_MORE_OK,
   FETCH_SUGGESTIONS,
   FETCH_SUGGESTIONS_OK,
-  FETCH_SUGGESTIONS_FAILED
+  FETCH_SUGGESTIONS_FAILED,
+  HIDE_SUGGESTIONS
 } from './types';
 import resources from './../utilities/resources';
 import {
@@ -167,12 +168,18 @@ export const fetchSuggestions = (keyword) => {
   };
 
   return (dispatch) => {
-    dispatch({type: FETCH_SUGGESTIONS, payload: ''});
+    dispatch({type: FETCH_SUGGESTIONS, payload: {status: 'loading'}});
     axios.request(config).then(response => {
-      dispatch({type: FETCH_SUGGESTIONS_OK, payload: response});
+      dispatch({ type: FETCH_SUGGESTIONS_OK, payload: { items: response.data, status: 'ok' }});
     })
     .catch(err => {
-      dispatch({type: FETCH_SUGGESTIONS_FAILED, payload: 'Something went wrong here'})
+      dispatch({ type: FETCH_SUGGESTIONS_FAILED, payload: { status: 'Something went wrong here'}})
     });
+  }
+}
+
+export const hideSuggestions = () => {
+  return {
+    type: HIDE_SUGGESTIONS
   }
 }

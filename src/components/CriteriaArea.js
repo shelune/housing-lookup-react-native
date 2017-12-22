@@ -20,6 +20,8 @@ class CriteriaArea extends Component {
     this.setState({area});
     if (area.length >= 3) {
       this.props.fetchSuggestions(area);
+    } else {
+      this.props.hideSuggestions();
     }
   }
 
@@ -68,7 +70,7 @@ class CriteriaArea extends Component {
           {this.renderAreaBadges()}
         </View>
         <Button
-          style={styles.button}
+          buttonStyle={styles.button}
           title='Add'
           onPress={() => this.onBtnPress()}
         />
@@ -79,7 +81,7 @@ class CriteriaArea extends Component {
 
 const styles = {
   button: {
-    marginTop: 10
+    backgroundColor: styling.accentColorRed
   },
   badge: {
     marginRight: 10,
@@ -92,7 +94,7 @@ const styles = {
     paddingRight: 20,
     paddingLeft: 20,
     marginTop: 10,
-  }
+  },
 }
 
 const mapStateToProps = state => {

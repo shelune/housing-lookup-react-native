@@ -21,3 +21,4 @@ export const UPDATE_KEYWORD = 'update_keyword';
 export const FETCH_SUGGESTIONS = 'fetch_suggestions';
 export const FETCH_SUGGESTIONS_OK = 'fetch_suggestions_ok';
 export const FETCH_SUGGESTIONS_FAILED = 'fetch_suggestions_failed';
+export const HIDE_SUGGESTIONS = 'hide_suggestions';
