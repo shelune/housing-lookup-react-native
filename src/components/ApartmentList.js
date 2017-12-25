@@ -11,7 +11,20 @@ import styling from '../utilities/styling';
 class ApartmentList extends Component {
   constructor(props) {
     super(props);
-    this.state = {pageNumber: 0};
+    this.state = {canLoadMore: true};
+  }
+
+  _renderBtnLoadMore() {
+    return (this.props.hasMore) 
+    ? (<Button
+        buttonStyle={styles.buttonLoadMore}
+        large
+        backgroundColor={styling.accentColorRed}
+        title='Load More'
+        loading={false}
+        onPress={() => this.onButtonPress()}
+      />)
+    : null;
   }
 
   _keyExtractor(item, index) {
@@ -55,14 +68,9 @@ class ApartmentList extends Component {
           renderItem={this._renderTile}
           keyExtractor={this._keyExtractor}
         />
-        <Button
-          buttonStyle={styles.buttonLoadMore}
-          large
-          backgroundColor={styling.accentColorRed}
-          title='Load More'
-          loading={false}
-          onPress={() => this.onButtonPress()}
-        />
+        {
+          this._renderBtnLoadMore()
+        }
       </ScrollView>
     ) : (
       <View style={styles.errorScreen}>
@@ -87,7 +95,7 @@ const styles = {
 }
 
 const mapStateToProps = state => {
-  const { pageNumber, items, page, status } = state.fetchApartments;
+  const { pageNumber, items, page, status, hasMore } = state.fetchApartments;
   const criteria = state.criteria;
   // console.log('apt list mapped props: ', state)
 
@@ -96,7 +104,8 @@ const mapStateToProps = state => {
     items,
     page,
     criteria,
-    status
+    status,
+    hasMore
   }
 }
 

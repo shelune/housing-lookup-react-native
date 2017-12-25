@@ -7,7 +7,7 @@ import {
   INCREASE_PAGE_NUMBER,
   FETCH_MORE_OK} from './../actions/types';
 
-const initialState = {pageNumber: 0, items: [], page: {}, status: '', loading: false};
+const initialState = {pageNumber: 0, items: [], page: {}, status: '', loading: false, hasMore: true};
 
 export default (state = initialState, action) => {
   // console.log('response from sato to reducer: ', action.payload);
@@ -19,7 +19,8 @@ export default (state = initialState, action) => {
         page: action.payload.page,
         pageNumber: 0,
         status: 'OK',
-        loading: false
+        loading: false,
+        hasMore: action.payload.page.totalResultCount > (action.payload.page.pageNumber + 1) * resources.pageSize
       });
     case FETCH_MORE_OK:
       return Object.assign({}, state, {
@@ -27,7 +28,8 @@ export default (state = initialState, action) => {
         page: action.payload.page,
         pageNumber: state.pageNumber + 1,
         status: 'OK',
-        loading: false
+        loading: false,
+        hasMore: action.payload.page.totalResultCount > (action.payload.page.pageNumber + 1) * resources.pageSize
       });
     case FETCH_APARTMENTS_FAILED:
       // console.log('fetching failed...');

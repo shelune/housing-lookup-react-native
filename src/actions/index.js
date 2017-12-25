@@ -89,7 +89,7 @@ export const fetchMoreApartments = (fetchParams) => {
     }
   }
 
-  console.log('fetch params: ', config);
+  //console.log('fetch params: ', config);
 
   return (dispatch) => {
     dispatch({ type: FETCH_APARTMENTS_LOADING, payload: 'Loading' });
@@ -116,7 +116,7 @@ export const fetchApartments = (fetchParams) => {
     }
   }
 
-  console.log('fetch params: ', config);
+  //console.log('fetch params: ', config);
   
   return (dispatch) => {
     dispatch({ type: FETCH_APARTMENTS_LOADING, payload: 'Loading' });
