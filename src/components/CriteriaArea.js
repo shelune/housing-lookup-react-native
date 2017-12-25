@@ -50,6 +50,10 @@ class CriteriaArea extends Component {
   }
 
   onBtnPress() {
+    if (!this.state.area) {
+      return;
+    }
+    
     const commaPos = this.state.area.indexOf(',');
     if (commaPos !== -1) {
       const district = this.state.area.substring(commaPos, 0).trim()
@@ -58,7 +62,6 @@ class CriteriaArea extends Component {
     } else {
       this.props.selectArea({municipality: this.state.area});
     }
-    // this.setState({ area: '' });
   }
 
   render() {
